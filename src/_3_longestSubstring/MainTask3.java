@@ -9,7 +9,7 @@ public class MainTask3 {
 
     public static void main(String[] args) {
 
-        String str1 = "abcdabcbb";
+        String str1 = "abcabcbb";
         String str2 = "bbbbb";
         String str3 = "pwwkew";
 
