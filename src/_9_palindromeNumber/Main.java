@@ -21,11 +21,11 @@ public class Main {
         Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
          */
 
-//        int num = 121;
-//        System.out.println(isPolindrome(num));
-//
-//        int num2 = -121;
-//        System.out.println(isPolindrome(num2));
+        int num = 121;
+        System.out.println(isPolindrome(num));
+
+        int num2 = -121;
+        System.out.println(isPolindrome(num2));
 
         int num3 = 1441;
         System.out.println(isPolindrome(num3));
@@ -33,17 +33,6 @@ public class Main {
     }
 
     public static boolean isPolindrome(Integer num) {
-//          String temp = String.valueOf(num);
-//        char[] res = temp.toCharArray();
-//        int left = 0;
-//        int right = res.length - 1;
-//        while(left < right){
-//            if (res[left] != res[right]){
-//                return false;
-//            }
-//            left++;
-//            right--;
-//        }
 
         if (num < 0 || (num != 0 && num % 10 == 0)){
             return false;

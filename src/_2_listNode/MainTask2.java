@@ -1,7 +1,5 @@
 package _2_listNode;
 
-import java.util.LinkedList;
-
 public class MainTask2 {
     /*
     2. Add Two Numbers
@@ -21,29 +19,28 @@ public class MainTask2 {
     Output: [8,9,9,9,0,0,0,1]
      */
     public static void main(String[] args) {
-        LinkedList l1 =new LinkedList<>();
-        l1.add(2);
-        l1.add(4);
-        l1.add(3);
-
-        System.out.println(l1);
 
 
-
-
-        LinkedList l2 =new LinkedList<>();
-        l2.add(5);
-        l2.add(6);
-        l2.add(4);
-
-        System.out.println(l2);
 
     }
 
-    public ListNode addTwoNumbers(LinkedList l1, LinkedList l2) {
-
-
-        return null;
+    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode dummyHead = new ListNode(0);
+        ListNode curr = dummyHead;
+        int carry = 0;
+        while (l1 != null || l2 != null || carry != 0) {
+            int x = (l1 != null) ? l1.val : 0;
+            int y = (l2 != null) ? l2.val : 0;
+            int sum = carry + x + y;
+            carry = sum / 10;
+            curr.next = new ListNode(sum % 10);
+            curr = curr.next;
+            if (l1 != null)
+                l1 = l1.next;
+            if (l2 != null)
+                l2 = l2.next;
+        }
+        return dummyHead.next;
     }
 
 
@@ -52,9 +49,18 @@ public class MainTask2 {
 class ListNode {
     int val;
     ListNode next;
-    ListNode() {}
-    ListNode(int val) { this.val = val; }
-    ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+
+    ListNode() {
+    }
+
+    ListNode(int val) {
+        this.val = val;
+    }
+
+    ListNode(int val, ListNode next) {
+        this.val = val;
+        this.next = next;
+    }
 
     @Override
     public String toString() {

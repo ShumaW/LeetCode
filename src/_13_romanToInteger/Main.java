@@ -48,7 +48,7 @@ public class Main {
         Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
          */
 
-        String str = "MMXXIV";
+        String str = "MCDXCVIII";
         System.out.println(romanToInt(str));
     }
 

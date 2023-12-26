@@ -44,7 +44,7 @@ public class Main {
         Output: "MCMXCIV"
         Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
          */
-        int num = 1994;
+        int num = 1498;
         System.out.println(intToRoman(num));
     }
 
