@@ -1,6 +1,7 @@
 package _15_3Sum;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -38,28 +39,64 @@ public class Main {
      */
     public static void main(String[] args) {
         int[] nums1 = {-1, 0, 1, 2, -1, -4};
-        out.println(threeSum(nums1));
+        out.println(threeSum1(nums1));
+        out.println(threeSum2(nums1));
         out.println("-".repeat(50));
 
-        int[] nums2 = {0,1,1};
-        out.println(threeSum(nums2));
+        int[] nums2 = {0, 1, 1};
+        out.println(threeSum1(nums2));
+        out.println(threeSum2(nums2));
         out.println("-".repeat(50));
 
-        int[] nums3 = {0,0,0};
-        out.println(threeSum(nums3));
+        int[] nums3 = {0, 0, 0};
+        out.println(threeSum1(nums3));
+        out.println(threeSum2(nums3));
         out.println("-".repeat(50));
+
+        int[] nums4 = {-1, 0, 1, 2, -1, -4, -2, -3, 3, 0, 4};
+        out.println(threeSum1(nums4));
+        out.println("-".repeat(50));
+        out.println(threeSum2(nums4));
     }
 
-    public static List<List<Integer>> threeSum(int[] nums) {
+    public static List<List<Integer>> threeSum1(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         for (int i = 0; i < nums.length; i++) {
             for (int j = i + 1; j < nums.length; j++) {
                 for (int k = j + 1; k < nums.length; k++) {
                     if (nums[i] + nums[j] + nums[k] == 0) {
-                        result.add(Stream.of(nums[i],nums[j],nums[k])
+                        result.add(Stream.of(nums[i], nums[j], nums[k])
                                 .sorted()
                                 .toList());
                     }
+                }
+            }
+        }
+        return result.stream()
+                .distinct()
+                .toList();
+    }
+
+    public static List<List<Integer>> threeSum2(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        Arrays.sort(nums);
+
+        for (int i = 0; i < nums.length - 2; i++) {
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+            int k = i + 1;
+            int j = nums.length - 1;
+            while (k < j) {
+                int sum = nums[i] + nums[k] + nums[j];
+                if (sum == 0) {
+                    result.add(Arrays.asList(nums[i], nums[k], nums[j]));
+                    k++;
+                    j--;
+                } else if (sum < 0) {
+                    k++;
+                } else {
+                    j--;
                 }
             }
         }
